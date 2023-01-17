@@ -1,0 +1,34 @@
+type Query {
+  getMatches: [Match!]
+  getBalls: [Ball!]
+}
+
+type Mutation {
+  addMatch(year: Int!, team1: String!, team2: String!, winner: String!): Match
+  addBall(
+    bowler: String!
+    extraRuns: Int
+    totalRuns: Int!
+    bowlingTeam: String!
+    matchId: Int!
+  ): Ball
+}
+
+type Match {
+  id: ID!
+  year: Int!
+  team1: String!
+  team2: String!
+  winner: String!
+  ballsPut: [Ball!]
+}
+
+type Ball {
+  id: ID!
+  bowler: String!
+  extraRuns: Int!
+  totalRuns: Int!
+  bowlingTeam: String!
+  matchPlayed: Match!
+  matchId: ID!
+}
